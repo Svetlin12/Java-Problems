@@ -1,16 +1,16 @@
 import java.util.*;
 import java.lang.*;
 
-public static class TreeNode {
+public class TreeNode {
         int val;
         TreeNode left;
         TreeNode right;
         TreeNode(int x) { val = x; }
     }
 
-public static class Codec {
+public class Codec {
 
-        public static StringBuilder serializeHelper(TreeNode node, StringBuilder serialized) {
+        public StringBuilder serializeHelper(TreeNode node, StringBuilder serialized) {
             if (node == null) {
                serialized.append("null,");
                return serialized;
@@ -23,14 +23,14 @@ public static class Codec {
         }
 
         // Encodes a tree to a single string.
-        public static String serialize(TreeNode root) {
+        public String serialize(TreeNode root) {
             StringBuilder serialized = new StringBuilder();
             serialized = serializeHelper(root, serialized);
             serialized.deleteCharAt(serialized.length() - 1);
             return serialized.toString();
         }
 
-        public static TreeNode deserializeHelper(Queue<String> vals, TreeNode node) {
+        public TreeNode deserializeHelper(Queue<String> vals, TreeNode node) {
             if (vals.isEmpty())
                 return null;
 
@@ -45,7 +45,7 @@ public static class Codec {
         }
 
         // Decodes your encoded data to tree.
-        public static TreeNode deserialize(String data) {
+        public TreeNode deserialize(String data) {
             String[] nodeVals = data.split(",");
             Queue<String> q = new LinkedList<>();
             Collections.addAll(q, nodeVals);
@@ -59,7 +59,7 @@ public static class Codec {
         }
 }
 
-public static void printTree(TreeNode t) {
+public void printTree(TreeNode t) {
     System.out.print(t.val + " "); 
     if (t.left != null)
         printTree(t.left);
@@ -68,7 +68,7 @@ public static void printTree(TreeNode t) {
         printTree(t.right);
 }
 
-public static void main(String[] args) {
+public void main(String[] args) {
     TreeNode root = new TreeNode(1);
     root.left = new TreeNode(2);
     root.right = new TreeNode(3);
